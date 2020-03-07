@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<style>
+<style src="./assets/css/Tailwind.css">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
