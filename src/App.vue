@@ -64,7 +64,7 @@
         </div>
       </div>
     </header>
-    <div class="pb-12 max-w-screen-xl overflow-x-hidden mx-auto lg:px-4 xl:px-16">
+    <div class="pb-6 max-w-screen-xl overflow-x-hidden mx-auto lg:px-4 xl:px-16">
         <div class="flex flex-col lg:flex-row">
           <div class="order-last lg:order-first px-2 sm:px-4 w-full lg:w-3/4 lg:pl-0 lg:pl-4 xl:px-0">
             <router-view></router-view>

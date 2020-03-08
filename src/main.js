@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import VueCompositionApi from '@vue/composition-api';
+import VS2 from 'vue-script2';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
+Vue.use(VS2);
 Vue.use(require('vue-moment'));
 
 Vue.filter('truncate', (value, length, suffix) => {

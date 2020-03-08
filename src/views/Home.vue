@@ -7,7 +7,7 @@
         <div v-for="(item, i) in list" :key="i">
           <article class="relative w-full bg-background-secondary rounded-sm h-400 shadow col-span-1 sm:col-span-1">
             <router-link :to="/articles/ + i" class="bg-background-secondary rounded-sm h-full">
-              <div class="post-card-wrapper bg-cover rounded-t-sm h-40 px-16 pt-10 pb-16"
+              <div class="post-card-wrapper bg-cover rounded-t-sm h-40"
                    :style="{ backgroundImage: `url(${item.urlToImage})` }"
                    style="box-shadow: inset 0 0 0 9999px rgba(0,89,147,.75);">
                 <div class="post-card-meta flex hidden">
@@ -16,14 +16,14 @@
                     05.03
                   </time>
                 </div>
-                <div class="post-card-body hidden">
-                  <div class="post-card-meta_">
-                    <p class="post-card-label_">Новости</p>
-                    <time class="post-card-date_" datetime="2020-03-05">
-                      05.03
+                <div class="post-card-body hidden md:block pt-32 px-6">
+                  <div class="post-card-meta_ flex justify-between text-copy-primary">
+                    <p class="post-card-label_ ">Новости</p>
+                    <time class="post-card-date_" :datetime="item.publishedAt">
+                      {{ item.publishedAt | moment("DD.MM") }}
                     </time>
                   </div>
-                  <h2 class="text-copy-primary text-lg font-bold">{{ item.title}}</h2>
+                  <h2 class="text-copy-primary text-lg font-bold hidden">{{ item.title}}</h2>
                   <p class="post-card-excerpt md:hidden">Китайская компания TCL показала концепт смартфона с выдвижным экраном, превращающим его в полноценный планшет...</p>
                 </div>
                 <div class="post-card-extra hidden flex items-center">
@@ -36,14 +36,15 @@
                 </div>
               </div>
               <div class="p-5">
-                <div class="flex items-center mb-3">
-                  <button class="px-2 py-1 mr-4 text-xs text-blue-600 uppercase border border-blue-600 rounded-sm">news</button>
+                <div class="flex items-center mb-3 md:hidden">
+                  <button class="px-2 py-1 mr-8 text-xs text-blue-600 uppercase border border-blue-600 rounded-sm">news</button>
                   <time class="text-sm font-semibold text-blue-600">{{ item.publishedAt | moment("DD.MM") }}</time>
                 </div>
                 <div class="mb-2 text-lg font-medium text-copy-primary overflow-hidden" v-if="item.title && item.title.length > 1">
-                  {{ item.title | truncate(80, '..') }}
+                  {{ item.title | truncate(50, '..') }}
                 </div>
-                <div class="text-sm text-copy-secondary text-justify overflow-hidden" v-if="item.description && item.description.length > 1">{{ item.description | truncate(80, '...') }}</div>
+                <div class="mt-2 hidden sm:block text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(100, '...') }}</div>
+                <div class="mt-2 sm:hidden text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(200, '...') }}</div>
               </div>
             </router-link>
           </article>

@@ -13,7 +13,7 @@ export default function () {
       fetchData,
       fetching,
     } = useFetch(
-      `http://newsapi.org/v2/everything?q=${val.value}&apiKey=${api.value}`,
+      `https://newsapi.org/v2/everything?q=${val.value}&apiKey=${api.value}`,
       {},
     );
     fetchData();
