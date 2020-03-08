@@ -56,7 +56,7 @@
                 <router-link to="/economy" class="text-copy-primary py-3 px-5 hover:bg-blue-500 hover:text-white">economy</router-link>
                 <router-link to="/business" class="text-copy-primary py-3 px-5 hover:bg-blue-500 hover:text-white">Business</router-link>
                 <router-link to="/sports" class="text-copy-primary py-3 px-5 hover:bg-blue-500 hover:text-white">sports</router-link>
-              <div class="my-4">
+              <div class="my-4 px-10">
                 <ThemeSwitcher :theme="theme" @themeChanged="updateTheme" />
               </div>
             </div>

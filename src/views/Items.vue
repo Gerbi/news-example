@@ -7,8 +7,5 @@
 <script>
 export default {
   name: 'Items',
-  props: {
-    type: String,
-  },
 };
 </script>
