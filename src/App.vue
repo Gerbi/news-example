@@ -15,15 +15,15 @@
             <div class="flex-shrink-0 pr-4 md:hidden">
               <button
                 ref="openButton"
-                @click="menuShow = false"
+                @click="toggle"
                 type="button"
                 class="block text-blue-600 focus:outline-none"
                 aria-label="Menu"
               >
-                <svg v-if="menuShow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L10 8.58579L14.2929 4.29289C14.6834 3.90237 15.3166 3.90237 15.7071 4.29289C16.0976 4.68342 16.0976 5.31658 15.7071 5.70711L11.4142 10L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L10 11.4142L5.70711 15.7071C5.31658 16.0976 4.68342 16.0976 4.29289 15.7071C3.90237 15.3166 3.90237 14.6834 4.29289 14.2929L8.58579 10L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" fill="#4A5568"/>
+                <svg class="h-6 w-6" v-if="isOpen" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M4.29289 4.29289C4.68342 3.90237 5.31658 3.90237 5.70711 4.29289L10 8.58579L14.2929 4.29289C14.6834 3.90237 15.3166 3.90237 15.7071 4.29289C16.0976 4.68342 16.0976 5.31658 15.7071 5.70711L11.4142 10L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L10 11.4142L5.70711 15.7071C5.31658 16.0976 4.68342 16.0976 4.29289 15.7071C3.90237 15.3166 3.90237 14.6834 4.29289 14.2929L8.58579 10L4.29289 5.70711C3.90237 5.31658 3.90237 4.68342 4.29289 4.29289Z" fill="currentColor"/>
                 </svg>
-                <svg v-else class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <svg v-if="!isOpen" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                   <path
                     d="M3 6C3 5.44772 3.44772 5 4 5H20C20.5523 5 21 5.44772 21 6C21 6.55228 20.5523 7 20 7H4C3.44772 7 3 6.55228 3 6Z"
                   />
@@ -49,7 +49,7 @@
               </div>
             </div>
           </nav>
-          <div class="md:hidden -mx-3" v-if="menuShow">
+          <div :class="{ 'hidden': !isOpen, 'block': isOpen }" class="md:hidden -ml-3 mr-0" v-if="menuShow">
             <div class="flex flex-col text-center justify-center">
               <router-link to="/news" class="text-copy-primary py-3 px-5 hover:bg-blue-500 hover:text-white">News</router-link>
                 <router-link to="/technology" class="text-copy-primary py-3 px-5 hover:bg-blue-500 hover:text-white">Technology</router-link>
