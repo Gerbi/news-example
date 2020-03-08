@@ -1,12 +1,13 @@
 <template>
   <!-- eslint-disable max-len -->
   <main>
-    <div class="text-center" v-if="fetching">Fetching</div>
-    <div class="text-center" v-if="error">Error</div>
+    <div class="text-center" v-if="api_status === 'FETCHING'">Fetching</div>
+    <div class="text-center" v-else-if="api_status === 'FETCHING_ERROR'">Error</div>
+    <div v-else-if="api_status === 'FETCHING_SUCCESS'">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
-        <div v-for="(item, i) in list" :key="i">
+        <div v-for="(item, i) in articles" :key="i">
           <article class="relative w-full bg-background-secondary rounded-sm h-400 shadow col-span-1 sm:col-span-1">
-            <router-link :to="/articles/ + i" class="bg-background-secondary rounded-sm h-full">
+            <router-link to="/+{i}" class="bg-background-secondary rounded-sm h-full">
               <div class="post-card-wrapper bg-cover rounded-t-sm h-40 px-16 pt-10 pb-16"
                    :style="{ backgroundImage: `url(${item.urlToImage})` }"
                    style="box-shadow: inset 0 0 0 9999px rgba(0,89,147,.75);">
@@ -49,35 +50,57 @@
           </article>
         </div>
       </div>
+    </div>
+    <div v-else>Oops, not found</div>
     <div class="text-center mt-4">
-      <button class="px-4 py-2 mt-2 text-white bg-blue-500 rounded-md" @click.prevent="submitted">Read More...</button>
+      <button class="px-4 py-2 mt-2 text-white bg-blue-500 rounded-md" @click.prevent="fetchArticle">Read More...</button>
     </div>
   </main>
 </template>
 
 <script>
-import { onMounted } from '@vue/composition-api';
-import useBrewList from '../utils/list';
+import { reactive, toRefs } from '@vue/composition-api';
 
-export default ({
+const useApi = (url, options = {}) => {
+  const state = reactive({
+    data: null,
+    api_status: '',
+  });
+  const initFetch = async () => {
+    try {
+      state.api_status = 'FETCHING';
+      const response = await fetch(url);
+      const data = await response.json();
+      state.data = data.articles;
+      state.api_status = 'FETCHING_SUCCESS';
+    } catch (error) {
+      state.api_status = 'FETCHING_ERROR';
+    }
+  };
+  // eslint-disable-next-line no-prototype-builtins
+  if (options.hasOwnProperty('fetchImmediately') && options.fetchImmediately) {
+    initFetch();
+  }
+  return {
+    ...toRefs(state),
+    initFetch,
+  };
+};
+export default {
+  name: 'Mainbar',
   setup() {
-    const {
-      submitted,
-      list,
-      val,
-      error,
-      fetching,
-    } = useBrewList();
-    onMounted(() => {
-      submitted();
-    });
+    // eslint-disable-next-line camelcase
+    const { data, api_status, initFetch } = useApi(
+      'http://newsapi.org/v2/top-headlines?country=ca&category=entertainment&apiKey=2fe02a107f914d02bf678cd0a8805d8a',
+      {
+        fetchImmediately: true,
+      },
+    );
     return {
-      val,
-      list,
-      submitted,
-      error,
-      fetching,
+      articles: data,
+      api_status,
+      fetchArticle: initFetch,
     };
   },
-});
+};
 </script>
