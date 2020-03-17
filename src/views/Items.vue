@@ -2,7 +2,7 @@
   <!-- eslint-disable max-len -->
   <div>
     <article class="bg-background-secondary rounded-md">
-      <div class="px-16 py-10">
+      <div class="px-4 py-6 sm:px-16 sm:py-10">
         <header>
           <div class="mb-5">
             <button class="px-4 py-2 bg-blue-500 text-white mr-4">Интернет</button>
@@ -17,7 +17,7 @@
           <p class="text-copy-secondary mb-6">
             Last night, the space corporation Ilona Mask SpaceX successfully launched the Falcon 9 launch vehicle with the Dragon cargo capsule and two tons of payload for three crew members living in orbit. It is noteworthy that this flight will be the last for the original Dragon.
           </p>
-          <figure class="-mx-16 mt-8 my-12">
+          <figure class="-mx-4 sm:-mx-16 mt-8 my-12">
             <img src="https://kod.ru/content/images/2020/03/image-57.png" class="kg-image">
             <figcaption class="text-copy-secondary text-center mt-4">
               <font style="vertical-align: inherit;">

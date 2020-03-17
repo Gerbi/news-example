@@ -1,11 +1,11 @@
 <template>
   <!-- eslint-disable max-len -->
   <main>
-    <div class="text-center" v-if="fetching">Fetching</div>
+    <div class="text-center mt-24 text-4xl font-medium text-blue-600" v-if="fetching">Loading...</div>
     <div class="text-center" v-if="error">Error</div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
         <div v-for="(item, i) in list" :key="i">
-          <article class="relative w-full bg-background-secondary rounded-sm h-400 shadow col-span-1 sm:col-span-1">
+          <article class="relative w-full bg-background-secondary rounded-sm h-400 shadow-xs col-span-1 sm:col-span-1 hover:shadow-lg">
             <router-link :to="/articles/ + i" class="bg-background-secondary rounded-sm h-full">
               <div class="post-card-wrapper bg-cover rounded-t-sm h-40"
                    :style="{ backgroundImage: `url(${item.urlToImage})` }"
@@ -17,7 +17,7 @@
                   </time>
                 </div>
                 <div class="post-card-body hidden md:block pt-32 px-6">
-                  <div class="post-card-meta_ flex justify-between text-copy-primary">
+                  <div class="post-card-meta_ flex justify-between text-white">
                     <p class="post-card-label_ ">Новости</p>
                     <time class="post-card-date_" :datetime="item.publishedAt">
                       {{ item.publishedAt | moment("DD.MM") }}
@@ -43,8 +43,11 @@
                 <div class="mb-2 text-lg font-medium text-copy-primary overflow-hidden" v-if="item.title && item.title.length > 1">
                   {{ item.title | truncate(50, '..') }}
                 </div>
-                <div class="mt-2 hidden sm:block text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(100, '...') }}</div>
-                <div class="mt-2 sm:hidden text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(200, '...') }}</div>
+                <!-- <div class="mt-2 grid hidden text-sm sm:block text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(180, '...') }}</div> -->
+                <!-- <div class="mt-2 grid overflow-hidden text-sm text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(200, '...') }}</div> -->
+                <div class="flex h-full">
+                  <div class="mt-2 overflow-hidden text-sm text-gray-600 break-all h-full leading-normal" aria-hidden="false" style="-webkit-box-orient: vertical; display: -webkit-box;">{{ item.description }}</div>
+                </div>
               </div>
             </router-link>
           </article>
