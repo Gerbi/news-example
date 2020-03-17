@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { ref, reactive, toRefs } from '@vue/composition-api';
+import { reactive, toRefs } from '@vue/composition-api';
 import ItemsSidebar from './ItemsSidebar.vue';
 
 const useApi = (url, options = {}) => {
@@ -87,16 +87,12 @@ export default {
         fetchImmediately: true,
       },
     );
-    function toggle() {
-      ref.isOpen = !ref.isOpen;
-    }
     return {
       articles: data,
       api_status,
       fetchArticle: initFetch,
       isOpen: false,
       menuShow: true,
-      toggle,
     };
   },
 };
