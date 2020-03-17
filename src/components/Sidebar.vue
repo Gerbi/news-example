@@ -31,12 +31,25 @@
       </div>
     </div>
     <div>
+      <div v-for="(item, i) in articles" :key="i">
+        <items-sidebar :item="item" />
+      </div>
+     <div class="flex justify-center md:hidden">
+        <button class="relative flex items-center justify-center w-12 h-12 -mt-5 rounded-full bg-background-primary focus:outline-none">
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-background-secondary">
+          <svg class="w-8 h-8 fill-current text-copy-primary" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7071 12.7071C14.3166 13.0976 13.6834 13.0976 13.2929 12.7071L10 9.41421L6.70711 12.7071C6.31658 13.0976 5.68342 13.0976 5.29289 12.7071C4.90237 12.3166 4.90237 11.6834 5.29289 11.2929L9.29289 7.29289C9.68342 6.90237 10.3166 6.90237 10.7071 7.29289L14.7071 11.2929C15.0976 11.6834 15.0976 12.3166 14.7071 12.7071Z"/>
+          </svg>
+        </span>
+      </button>
     </div>
+  </div>
   </aside>
 </template>
 
 <script>
 import { ref, reactive, toRefs } from '@vue/composition-api';
+import ItemsSidebar from './ItemsSidebar.vue';
 
 const useApi = (url, options = {}) => {
   const state = reactive({
@@ -65,6 +78,7 @@ const useApi = (url, options = {}) => {
 };
 export default {
   name: 'Sidebar',
+  components: { ItemsSidebar },
   setup() {
     // eslint-disable-next-line camelcase
     const { data, api_status, initFetch } = useApi(
