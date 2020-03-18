@@ -16,7 +16,7 @@
                     05.03
                   </time>
                 </div>
-                <div class="hidden px-6 pt-32 post-card-body md:block">
+                <div class="box-content hidden px-6 pt-32 post-card-body md:block">
                   <div class="flex justify-between text-white post-card-meta_">
                     <p class="post-card-label_ ">Новости</p>
                     <time class="post-card-date_" :datetime="item.publishedAt">
@@ -43,11 +43,8 @@
                 <div class="mb-2 overflow-hidden text-lg font-medium text-copy-primary" v-if="item.title && item.title.length > 1">
                   {{ item.title | truncate(50, '..') }}
                 </div>
-                <!-- <div class="grid hidden mt-2 text-sm text-gray-600 break-all sm:block" v-if="item.description && item.description.length > 1">{{ item.description | truncate(180, '...') }}</div> -->
-                <!-- <div class="grid mt-2 overflow-hidden text-sm text-gray-600 break-all" v-if="item.description && item.description.length > 1">{{ item.description | truncate(200, '...') }}</div> -->
-                <div class="flex h-full">
-                  <div class="h-full mt-2 overflow-hidden text-sm leading-normal text-gray-600 break-all" aria-hidden="false" style="-webkit-box-orient: vertical; display: -webkit-box;">{{ item.description }}</div>
-                </div>
+                <div class="grid hidden mt-2 text-sm text-gray-600 break-all sm:block" v-if="item.description && item.description.length > 1">{{ item.description | truncate(100, '...') }}</div>
+                <div class="grid mt-2 overflow-hidden text-sm text-gray-600 break-all sm:hidden" v-if="item.description && item.description.length > 1">{{ item.description | truncate(200, '...') }}</div>
               </div>
             </router-link>
           </article>

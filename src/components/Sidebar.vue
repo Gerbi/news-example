@@ -88,6 +88,7 @@ export default {
     return {
       isOpen: false,
       menuShow: true,
+      apiKey: '2fe02a107f914d02bf678cd0a8805d8a',
     };
   },
   mounted() {
@@ -99,7 +100,7 @@ export default {
     },
     setData: mutations.setData,
     async fetch() {
-      const req = await window.fetch('https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=2fe02a107f914d02bf678cd0a8805d8a&pageSize=5');
+      const req = await window.fetch(`https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${this.apiKey}&pageSize=5`);
       const res = await req.json();
       return this.setData(res);
     },
