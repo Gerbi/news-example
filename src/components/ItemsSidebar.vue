@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable max-len -->
-<div class="p-4 mt-2 rounded-sm shadow cursor-pointer sm:mt-4 bg-background-secondary grid-span-3 md:hidden">
+<div class="p-4 mt-2 rounded-sm shadow cursor-pointer bg-background-secondary grid-span-3">
     <div class="h-full">
         <p class="text-sm text-copy-secondary">{{ item.title }}</p>
         <p class="mt-2 text-sm font-semibold text-blue-600">Новости,

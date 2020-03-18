@@ -1,14 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Comments from '../components/Comments.vue';
+import Home from '../views/Home.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Comments',
-    component: Comments,
+    name: 'Home',
+    component: Home,
   },
   {
     path: '/articles/:id',

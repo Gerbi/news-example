@@ -3,7 +3,7 @@
   <main>
     <div class="mt-24 text-4xl font-medium text-center text-blue-600" v-if="fetching">Loading...</div>
     <div class="text-center" v-if="error">Error</div>
-      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 sm:gap-4">
+      <div class="grid grid-cols-1 gap-2 mt-2 sm:mt-3 lg:mt-0 sm:grid-cols-2 md:grid-cols-3 sm:gap-4">
         <div v-for="(item, i) in list" :key="i">
           <article class="relative w-full col-span-1 rounded-sm shadow-xs bg-background-secondary h-400 sm:col-span-1 hover:shadow-lg">
             <router-link :to="/articles/ + i" class="h-full rounded-sm bg-background-secondary">
