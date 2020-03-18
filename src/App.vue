@@ -70,7 +70,7 @@
             <router-view></router-view>
           </div>
           <div class="order-first w-full px-2 lg:order-last sm:px-4 lg:w-1/4 lg:pl-0 lg:pr-4 xl:pr-0 xl:pl-4">
-            <Sidebar />
+            <!-- <Sidebar /> -->
           </div>
         </div>
     </div>
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar.vue';
+// import Sidebar from './components/Sidebar.vue';
 import ThemeSwitcher from './components/ThemeSwitcher.vue';
 import Footer from './components/Footer.vue';
 
@@ -88,7 +88,7 @@ export default {
   components: {
     Footer,
     ThemeSwitcher,
-    Sidebar,
+    // Sidebar,
   },
   data() {
     return {
