@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="w-full md:hidden">
-      <div class="p-4 mt-2 rounded-sm shadow cursor-pointer sm:mt-4 bg-background-secondary grid-span-3">
+      <div class="z-40 p-4 mt-2 rounded-sm shadow cursor-pointer border-border-color-primary sm:mt-4 bg-background-secondary grid-span-3">
         <p class="text-sm text-copy-secondary">Режиссёр фильма «Достать ножи»: Apple не разрешает злодеям в кино использовать iPhone</p>
         <div class="flex items-center justify-between mt-2">
           <p class="text-sm font-semibold text-blue-600">Новости, 20.02</p>
@@ -49,6 +49,14 @@
           </span>
           Materials of the week
           </button>
+        </div>
+      </div>
+      <div :class="{ 'block': !isOpen, 'hidden': isOpen }">
+        <div class="px-2">
+          <div class="p-1 shadow cursor-pointer border-border-color-primary bg-background-secondary"></div>
+        </div>
+        <div class="px-4">
+          <div class="p-1 shadow cursor-pointer border-border-color-primary bg-background-secondary"></div>
         </div>
       </div>
     </div>
